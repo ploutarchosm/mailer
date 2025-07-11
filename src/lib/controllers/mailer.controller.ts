@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, ValidationPipe } from "@nestjs/common";
 import { MailTemplateService } from "../services/mail-template.service";
 import { MailerService } from "../services/mailer.service";
-import { ApiOperation, ApiSecurity, ApiTags } from "@nestjs/swagger";
+import { ApiOperation, ApiParam, ApiSecurity, ApiTags } from "@nestjs/swagger";
 import { CreateMailTemplateDto, UpdateMailTemplateDto } from "../dto/mail-template.dto";
 import { Permissions, ADMIN, AuthorizedGuard, PermissionsGuard, SECURITY_API_TOKEN_HEADER_KEY, IListQuery, ValidateSystemRepositoryModelPipe } from '@ploutos/common';
 import { Types } from "mongoose";
@@ -43,8 +43,16 @@ export class MailerController {
 
     @Delete('template/:id')
     @ApiOperation({ summary: 'Delete email template by id.' })
+    @ApiParam({
+        name: 'id',
+        type: 'string',
+        description: 'MongoDB ObjectId',
+        example: '507f1f77bcf86cd799439011'
+    })
     @Permissions(ADMIN)
-    async delete(@Param('id', ValidateSystemRepositoryModelPipe) id: Types.ObjectId) {
+    async delete(
+        @Param('id', ValidateSystemRepositoryModelPipe) id: Types.ObjectId
+    ) {
         return await this.mailTemplateService.delete(id);
     }
 

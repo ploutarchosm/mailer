@@ -1,7 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema({ timestamps: true })
+@Schema({
+    collection: 'mail_templates',
+    timestamps: true,
+    versionKey: false,
+})
 export class MailTemplate extends Document {
     @Prop({
         type: String,
