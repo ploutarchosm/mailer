@@ -1,6 +1,6 @@
 {
   "name": "@ploutos/mailer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": " A Mailer package for Nest.JS application. Create email templates for emails and send them.",
   "author": "Ploutarchos Michaelides",
   "license": "MIT",
