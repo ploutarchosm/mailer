@@ -3,7 +3,7 @@ import { MailTemplateService } from "../services/mail-template.service";
 import { MailerService } from "../services/mailer.service";
 import { ApiOperation, ApiSecurity, ApiTags } from "@nestjs/swagger";
 import { CreateMailTemplateDto, UpdateMailTemplateDto } from "../dto/mail-template.dto";
-import { Permissions, ADMIN, AuthorizedGuard, PermissionsGuard, SECURITY_API_TOKEN_HEADER_KEY, QueriesForListRequest, ValidateSystemRepositoryModelPipe } from '@ploutos/common';
+import { Permissions, ADMIN, AuthorizedGuard, PermissionsGuard, SECURITY_API_TOKEN_HEADER_KEY, IListQuery, ValidateSystemRepositoryModelPipe } from '@ploutos/common';
 import { Types } from "mongoose";
 
 @ApiTags('Mailer')
@@ -52,7 +52,7 @@ export class MailerController {
     @ApiOperation({ summary: 'Get all email template with query.' })
     @Permissions(ADMIN)
     async list(
-        @Query(ValidationPipe) params: QueriesForListRequest,
+        @Query(ValidationPipe) params: IListQuery,
     ) {
         return this.mailTemplateService.list(
             params.take,
