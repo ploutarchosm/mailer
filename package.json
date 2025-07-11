@@ -34,7 +34,7 @@
     "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.2.0",
-    "@ploutos/common": "^0.3.1",
+    "@ploutos/common": "^1.2.0",
     "@types/nodemailer": "^6.4.17",
     "@types/uuid": "^10.0.0",
     "class-transformer": "^0.5.1",
